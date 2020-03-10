@@ -11,7 +11,7 @@ $ mvn spring-boot:run
 
 > Swagger Documentation
 
-<a href="http://localhost:8080/swagger-ui.html" target="_blank">`http://localhost:8080/swagger-ui.html`</a>
+<a href="http://localhost:8080/swagger-ui.html#!/driver-controller/" target="_blank">`http://localhost:8080/swagger-ui.html`</a>
 
 
 > Run tests

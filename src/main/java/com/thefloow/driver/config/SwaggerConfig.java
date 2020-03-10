@@ -20,7 +20,7 @@ public class SwaggerConfig {
                 .apiInfo(createApiInfo())
                 .useDefaultResponseMessages(false)
                 .select()
-                .paths(PathSelectors.regex("/drivers.*"))
+                .paths(PathSelectors.regex("/drivers.*|/driver/create"))
                 .build()
                 .tags(
                         new Tag("drivers", "")
