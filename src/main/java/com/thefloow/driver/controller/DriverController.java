@@ -9,7 +9,6 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
@@ -31,7 +30,7 @@ public class DriverController {
             @ApiResponse(code = 200, message = "Success", response = Driver.class, responseContainer = "List")
     })
     public CompletableFuture<List<Driver>> findAll() {
-        return CompletableFuture.completedFuture(new ArrayList<>());
+        return driverRepository.findAll();
     }
 
     @GetMapping("/drivers/byDate")
@@ -44,7 +43,7 @@ public class DriverController {
     })
     public CompletableFuture<List<Driver>> findDriversCreatedAfterDate(@RequestParam("date")
                                                       @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date) {
-        return CompletableFuture.completedFuture(new ArrayList<>());
+        return driverRepository.findCreatedAfter(date);
     }
 
     @PostMapping("/driver/create")
@@ -56,6 +55,6 @@ public class DriverController {
     })
     public CompletableFuture<Driver> createDriver(@RequestBody Driver driver) {
 
-        return CompletableFuture.completedFuture(new Driver());
+        return driverRepository.save(driver);
     }
 }
