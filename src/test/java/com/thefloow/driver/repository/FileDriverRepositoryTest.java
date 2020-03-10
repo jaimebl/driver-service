@@ -104,7 +104,7 @@ public class FileDriverRepositoryTest {
     public void newRepository_fileDoesNotExists_repositoryFileIsCreated() throws IOException {
 
         try (FileSystem fileSystem = Jimfs.newFileSystem(Configuration.unix())) {
-            Path driversTestRepoFile = getPathFromJimfsFilesystem(fileSystem, "drivers.txt");
+            Path driversTestRepoFile = fileSystem.getPath("drivers.txt");
 
             new FileDriverRepository(driversTestRepoFile);
 
