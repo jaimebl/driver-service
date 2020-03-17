@@ -1,15 +1,19 @@
 package com.thefloow.driver.model;
 
+import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 import java.util.Objects;
 
 public class Driver {
     private Integer id;
 
+    @NotNull(message = "First name is required")
     private String firstName;
 
+    @NotNull(message = "Last name is required")
     private String lastName;
 
+    @NotNull(message = "Date of birth is required")
     private LocalDate dateOfBirth;
 
     private LocalDate creationDate;

@@ -126,7 +126,22 @@ public class DriverControllerTest{
     @Test
     public void createNewDriver_invalidInputData_returnsBadRequest() throws Exception {
 
-        String invalidNewDriverRequestBody = "{\"firstName\": \"123\",\"lastName\": \"456\",\"dateOfBirth\": \"1984-15-05\"}";
+        String invalidNewDriverRequestBody = "{\"firstName\": \"123\",\"lastName\": \"456\",\"dateOfBirth\": \"1984-40-40\"}";
+
+        mockMvc.perform(
+                post("/driver/create")
+                        .contentType(APPLICATION_JSON)
+                        .content(invalidNewDriverRequestBody)
+        )
+                .andExpect(status().isBadRequest())
+                .andExpect(jsonPath("$.code").value("bad.request"))
+                .andExpect(jsonPath("$.message").value("Invalid input data"));
+    }
+
+    @Test
+    public void createNewDriver_missingMandatoryDateOfBirthParameter_returnsBadRequest() throws Exception {
+
+        String invalidNewDriverRequestBody = "{\"firstName\": \"123\",\"lastName\": \"456\"}";
 
         mockMvc.perform(
                 post("/driver/create")

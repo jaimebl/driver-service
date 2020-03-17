@@ -8,6 +8,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
@@ -48,7 +49,7 @@ public class DriverController {
     @ApiResponses({
             @ApiResponse(code = 200, message = "Success", response = Driver.class)
     })
-    public CompletableFuture<Driver> createDriver(@RequestBody Driver driver) {
+    public CompletableFuture<Driver> createDriver(@Valid @RequestBody Driver driver) {
 
         return driverRepository.save(driver);
     }
