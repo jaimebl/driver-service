@@ -140,15 +140,6 @@ public class FileDriverRepositoryTest {
     }
 
 
-    private static Path getTestFileFromJimfsFilesystem(String testFile) throws IOException {
-        FileSystem fileSystem = Jimfs.newFileSystem(Configuration.unix());
-        Path resourceFilePath = fileSystem.getPath("drivers.txt");
-        Files.copy(Paths.get("src", "test", "resources", "repository", testFile), resourceFilePath);
-
-        return resourceFilePath;
-    }
-
-
     private static Path getPathFromJimfsFilesystem(FileSystem fileSystem, String testFile) throws IOException {
         Path resourceFilePath = fileSystem.getPath("drivers.txt");
         Files.copy(Paths.get("src", "test", "resources", "repository", testFile), resourceFilePath);

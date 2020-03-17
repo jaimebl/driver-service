@@ -35,9 +35,6 @@ public class DriverController {
 
     @GetMapping("/drivers/byDate")
     @ApiOperation("Provides a list of all existing drivers created after certain date")
-    @ApiImplicitParams({
-            @ApiImplicitParam(name = "date", value = "Creation date to find drivers from", paramType = "query"),
-    })
     @ApiResponses({
             @ApiResponse(code = 200, message = "Success", response = Driver.class, responseContainer = "List")
     })
@@ -48,8 +45,6 @@ public class DriverController {
 
     @PostMapping("/driver/create")
     @ApiOperation("Creates and stores a new driver")
-    @ApiImplicitParams({
-            @ApiImplicitParam(name = "driver", value = "Driver to be created", paramType = "body")})
     @ApiResponses({
             @ApiResponse(code = 200, message = "Success", response = Driver.class)
     })
